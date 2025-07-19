@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Form</title>
+    <style>
+        body {
+            background-image: url("{{ url_for('static', filename='img.jpg') }}");
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white; /* Ensures text is visible on dark background */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px; /* Adds space between heading and form */
+            font-size: 3rem; /* Increases heading size */
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adds shadow for better visibility */
+        }
+
+        /* Make all label texts bold, increase font size, and add padding */
+        label {
+            font-weight: bold;
+            font-size: 1.2rem; /* Increases label font size */
+            padding-left: 10px;  /* Adds padding to the left */
+            padding-right: 10px; /* Adds padding to the right */
+        }
+
+        /* Form container for input fields */
+        .form-container {
+            width: 60%; /* Adjust the form width */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            width: 48%; /* Half-width for inputs, allowing them to align side by side */
+        }
+
+        /* Align left for labels that should be on the left */
+        .left-align label {
+            text-align: left;
+        }
+
+        /* Align right for labels that should be on the right */
+        .right-align label {
+            text-align: right;
+        }
+
+        /* Form inputs */
+        input[type="text"], input[type="number"] {
+            font-size: 1rem; /* Increases input font size */
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+        }
+
+        /* Predict button styling */
+        button {
+            font-size: 1.2rem; /* Increases button font size */
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Darker button color on hover */
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>Climate Change Impact on Agricultural Land Suitability: An Interpretable Machine Learning</h1>
+    <form method="POST" action="{{ url_for('predict') }}">
+        <div class="form-container">
+            <div class="form-group left-align">
+                <label for="Region">Region</label>
+                <input type="text" class="form-control" id="Region" name="Region" required>
+            </div>
+            <div class="form-group right-align">
+                <label for="Elevation">Elevation</label>
+                <input type="number" class="form-control" id="Elevation" name="Elevation" required>
+            </div>
+            <div class="form-group left-align">
+                <label for="Slope">Slope</label>
+                <input type="number" step="any" class="form-control" id="Slope" name="Slope" required>
+            </div>
+            <div class="form-group right-align">
+                <label for="Aspect">Aspect</label>
+                <input type="number" step="any" class="form-control" id="Aspect" name="Aspect" required>
+            </div>
+            <div class="form-group left-align">
+                <label for="Soil Type">Soil Type</label>
+                <input type="text" class="form-control" id="Soil Type" name="Soil Type" required>
+            </div>
+            <div class="form-group right-align">
+                <label for="Land Cover">Land Cover</label>
+                <input type="text" class="form-control" id="Land Cover" name="Land Cover" required>
+            </div>
+            <div class="form-group left-align">
+                <label for="Avg Annual Temp">Avg Annual Temp (°C)</label>
+                <input type="number" step="any" class="form-control" id="Avg Annual Temp" name="Avg Annual Temp" required>
+            </div>
+            <div class="form-group right-align">
+                <label for="Avg Annual Precip">Avg Annual Precip (mm)</label>
+                <input type="number" class="form-control" id="Avg Annual Precip" name="Avg Annual Precip" required>
+            </div>
+            <div class="form-group left-align">
+                <label for="GDD">GDD</label>
+                <input type="number" class="form-control" id="GDD" name="GDD" required>
+            </div>
+            <div class="form-group right-align">
+                <label for="Seasonal Precip Variability">Seasonal Precip Variability</label>
+                <input type="number" step="any" class="form-control" id="Seasonal Precip Variability" name="Seasonal Precip Variability" required>
+            </div>
+            <div class="form-group left-align">
+                <label for="Solar Radiation">Solar Radiation</label>
+                <input type="number" step="any" class="form-control" id="Solar Radiation" name="Solar Radiation" required>
+            </div>
+            <div class="form-group right-align">
+                <label for="Wind Speed">Wind Speed</label>
+                <input type="number" step="any" class="form-control" id="Wind Speed" name="Wind Speed" required>
+            </div>
+            <div class="form-group left-align">
+                <label for="Humidity">Humidity</label>
+                <input type="number" step="any" class="form-control" id="Humidity" name="Humidity" required>
+            </div>
+        </div>
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>
